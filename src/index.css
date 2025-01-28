@@ -9,3 +9,11 @@
 .inter {
   font-family: "Inter", sans-serif;
 }
+
+@theme {
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1366px;
+}
