@@ -109,7 +109,7 @@ const Navigation = () => {
           />
         </svg>
       </Link>
-      <ul className="flex gap-[40px]">
+      <ul className="xs:hidden lg:flex gap-[40px]">
         <NavDropdown
           name={"Features"}
           event={handleDropdown}

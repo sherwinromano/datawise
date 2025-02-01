@@ -17,10 +17,10 @@ const FeaturesDropdownContent = () => {
           <li className="flex">
             <Link className="flex items-center gap-4" to="/">
               <div className="flex flex-col gap-[4px]">
-                <h3 className="inter font-medium text-[#141513]">
+                <h3 className="inter text-base font-medium text-[#141513]">
                   Real-time Data Processing
                 </h3>
-                <p className="inter text-[14px] text-[#51564E]">
+                <p className="inter text-[0.875rem] text-[#51564E]">
                   Stay updated with instant insights and make decisions based on
                   the latest data.
                 </p>
@@ -44,10 +44,10 @@ const FeaturesDropdownContent = () => {
           <li className="flex">
             <Link className="flex items-center gap-4" to="/">
               <div className="flex flex-col gap-[4px]">
-                <h3 className="inter font-medium text-[#141513]">
+                <h3 className="inter text-base font-medium text-[#141513]">
                   Collaborative Tools
                 </h3>
-                <p className="inter text-[14px] text-[#51564E]">
+                <p className="inter text-[0.875rem] text-[#51564E]">
                   Work together seamlessly, share insights, and drive collective
                   growth with your team.
                 </p>
@@ -71,10 +71,10 @@ const FeaturesDropdownContent = () => {
           <li className="flex w-auto">
             <Link className="flex items-center gap-4" to="/">
               <div className="flex flex-col gap-[4px]">
-                <h3 className="inter font-medium text-[#141513]">
+                <h3 className="inter text-base font-medium text-[#141513]">
                   Security & Compliance
                 </h3>
-                <p className="inter text-[14px] text-[#51564E]">
+                <p className="inter text-[0.875rem] text-[#51564E]">
                   Ensure your data's safety with our top-tier security protocols
                   and compliance certifications.
                 </p>
