@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 360px;
+  --color-green: #3a7326;
+  --color-grey: #656b61;
+  --color-lightgrey: #c1c5bf;
+}
+
+* {
+  font-family: "DM Sans", sans-serif;
+}
