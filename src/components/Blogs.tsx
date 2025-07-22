@@ -37,10 +37,10 @@ const Blogs = () => {
 
   return (
     <section className="flex flex-col">
-      <div className="xs:p-6 md:p-10 lg:p-20 pt-32 pb-28 flex flex-col items-center gap-20">
-        <div className="flex flex-col items-center gap-5 w-[55%]">
+      <div className="xs:px-6 md:px-10 lg:px-20 xs:pt-[4.5rem] xs:pb-[4.2rem] md:pt-20 md:pb-[3.8rem] lg:pt-32 lg:pb-28 flex flex-col items-center gap-20 xs:order-1 lg:order-none">
+        <div className="flex flex-col items-center gap-5 xs:w-full sm:w-[80%] lg:w-[55%]">
           <h3 className="text-[#2E5C1E] uppercase font-medium">Blogs</h3>
-          <h1 className="text-[#141513] font-bold text-5xl">
+          <h1 className="text-[#141513] font-bold text-5xl text-center">
             In the spotlight
           </h1>
           <p className="text-[#51564E] text-center">
@@ -49,7 +49,7 @@ const Blogs = () => {
             data-driven journey.
           </p>
         </div>
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {spotlights.map((item, index) => {
             return (
               <div className="flex flex-col gap-6" key={index}>
@@ -71,7 +71,7 @@ const Blogs = () => {
           })}
         </div>
       </div>
-      <div className="xs:p-6 md:p-10 lg:p-20 bg-[#EFF0EF] flex xs:flex-col lg:flex-row gap-10">
+      <div className="xs:px-6 md:px-10 lg:px-20 xs:pt-[4.5rem] xs:pb-[4.3rem] md:py-[3.8rem] lg:py-20 bg-[#EFF0EF] flex xs:flex-col lg:flex-row gap-10">
         <div className="flex flex-col gap-8 xs:basis-full md:w-[60%] lg:basis-full">
           <div className="flex flex-col gap-4">
             <h2 className="text-[2.4rem] font-bold leading-[116%]">
