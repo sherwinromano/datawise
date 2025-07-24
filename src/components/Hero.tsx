@@ -6,6 +6,8 @@ import heroFour from "/hero-image-four.webp";
 import heroFive from "/spotlight-image-three.webp";
 import heroSix from "/spotlight-image-one.webp";
 import heroSeven from "/hero-image-last.webp";
+import { useTheme } from "../context/ThemeContext";
+import clsx from "clsx";
 
 type ImageCard = {
   src: string;
@@ -17,14 +19,26 @@ type PlaceholderCardStyle = {
 };
 
 const Hero = () => {
+  const { theme } = useTheme();
+
   return (
     <section className="xs:mx-6 md:mx-10 lg:mx-20 xs:pt-[4.5rem] xs:pb-[4.3rem] md:py-[3.8rem] lg:pt-28 lg:pb-20 flex flex-col">
       <div className="flex xs:flex-col lg:flex-row xs:gap-10 md:gap-[3.3rem] lg:gap-10 xs:pt-[4.5rem] xs:pb-[4.3rem] md:py-[3.8rem] lg:pb-20 lg:pt-28">
         <div className="flex flex-col w-full">
-          <h1 className="font-bold text-[#141513] xs:text-[4.4rem] md:text-[5.5rem] leading-[108%]">
+          <h1
+            className={clsx(
+              theme === "dark" ? "text-[#E0E3DD]" : "text-[#141513]",
+              "font-bold  xs:text-[4.4rem] md:text-[5.5rem] leading-[108%]"
+            )}
+          >
             Unleash the Power of Data
           </h1>
-          <p className="text-[#3C403A] text-2xl leading-[160%] mt-8">
+          <p
+            className={clsx(
+              theme === "dark" ? "text-[#A2A89E]" : "text-[#3C403A]",
+              "text-2xl leading-[160%] mt-8"
+            )}
+          >
             Step into the future with our state-of-the-art AI solutions. Unleash
             the potential of machine learning to innovate, optimize, and
             transform your business processes.
@@ -36,7 +50,12 @@ const Hero = () => {
             />
             <Button
               label="Learn more"
-              className="border border-lightgrey px-6 py-4 rounded-2xl"
+              className={clsx(
+                theme === "dark"
+                  ? "border-[#282B27] text-[#A2A89E]"
+                  : "border-lightgrey text-[#282B27]",
+                "border px-6 py-4 rounded-2xl"
+              )}
             />
           </div>
         </div>
@@ -44,7 +63,12 @@ const Hero = () => {
           <PlaceholderCard className="invisible" />
           <ImageCard src={heroOne} alt="Group collaboration" />
           <ImageCard src={heroTwo} alt="People discussing" />
-          <PlaceholderCard className="relative aspect-square bg-gray-200 rounded-3xl p-4 h-4/5 w-4/5" />
+          <PlaceholderCard
+            className={clsx(
+              theme === "dark" ? "bg-[#1F201D]" : "bg-[#E0E2DE]",
+              "relative aspect-square rounded-3xl p-4 h-4/5 w-4/5"
+            )}
+          />
           <ImageCard src={heroThree} alt="Meeting in progress" />
           <ImageCard src={heroFour} alt="Hands writing on paper" />
           <ImageCard src={heroFive} alt="Man presenting" />

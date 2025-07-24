@@ -1,4 +1,8 @@
+import clsx from "clsx";
+import { useTheme } from "../context/ThemeContext";
+
 const Features = () => {
+  const { theme } = useTheme();
   const features = [
     {
       icon: (
@@ -114,10 +118,20 @@ const Features = () => {
   ];
 
   return (
-    <section className="xs:px-6 md:px-10 lg:px-20 xs:pt-[4.5rem] xs:pb-[4.3rem] md:pt-20 md:pb-[3.8rem] lg:pt-32 lg:pb-28 flex flex-col items-center gap-20 bg-[#EFF0EF]">
+    <section
+      className={clsx(
+        theme === "dark" ? "bg-[#121311]" : "bg-[#EFF0EF]",
+        "xs:px-6 md:px-10 lg:px-20 xs:pt-[4.5rem] xs:pb-[4.3rem] md:pt-20 md:pb-[3.8rem] lg:pt-32 lg:pb-28 flex flex-col items-center gap-20 "
+      )}
+    >
       <div className="flex flex-col items-center xs:w-full sm:w-[80%] lg:w-1/2 gap-5">
         <h3 className="uppercase font-medium text-green">Solutions</h3>
-        <h1 className="font-bold text-5xl leading-[116%] text-center">
+        <h1
+          className={clsx(
+            theme === "dark" ? "text-[#E0E3DD]" : "text-[#141513]",
+            "font-bold text-5xl leading-[116%] text-center"
+          )}
+        >
           Revolutionize Your Business with Our AI-Powered Features
         </h1>
       </div>
@@ -125,14 +139,27 @@ const Features = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="p-10 rounded-3xl bg-white flex flex-col gap-20"
+            className={clsx(
+              theme === "dark" ? "bg-[#1F201D]" : "bg-white",
+              "p-10 rounded-3xl  flex flex-col gap-20"
+            )}
           >
             {feature.icon}
             <div className="flex flex-col gap-3">
-              <h3 className="leading-[128%] font-bold text-3xl text-[#282B27]">
+              <h3
+                className={clsx(
+                  theme === "dark" ? "text-[#E0E3DD]" : "text-[#282B27]",
+                  "leading-[128%] font-bold text-3xl"
+                )}
+              >
                 {feature.title}
               </h3>
-              <p className="leading-[158%] text-[#51564E] text-[1.3rem]">
+              <p
+                className={clsx(
+                  theme === "dark" ? "text-[#838B7F]" : "text-[#51564E]",
+                  "leading-[158%] text-[1.3rem]"
+                )}
+              >
                 {feature.description}
               </p>
             </div>

@@ -1,6 +1,9 @@
 import { Link } from "react-router";
+import { useTheme } from "../context/ThemeContext";
+import clsx from "clsx";
 
 const About = () => {
+  const { theme } = useTheme();
   const ratings = [
     {
       rate: "32+",
@@ -20,11 +23,21 @@ const About = () => {
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
           <h3 className="uppercase text-green font-medium">About Us</h3>
-          <h1 className="leading-[116%] font-bold text-5xl">
+          <h1
+            className={clsx(
+              theme === "dark" ? "text-[#E0E3DD]" : "text-[#141513]",
+              "leading-[116%] font-bold text-5xl"
+            )}
+          >
             Empowering Innovation AI
           </h1>
         </div>
-        <div className="xs:flex md:hidden lg:flex flex-col text-[#51564E] gap-4 text-2xl">
+        <div
+          className={clsx(
+            theme === "dark" ? "text-[#838B7F]" : "text-[#51564E]",
+            "xs:flex md:hidden lg:flex flex-col  gap-4 text-2xl"
+          )}
+        >
           <p className="leading-[160%]">
             We are driven by the vision of transforming businesses with
             artificial intelligence. Founded in 2024, we have consistently
@@ -43,8 +56,20 @@ const About = () => {
         {ratings.map((item, index) => {
           return (
             <div className="flex flex-col gap-3" key={index}>
-              <h2 className="font-bold text-4xl text-[#282B27]">{item.rate}</h2>
-              <p className="text-[1.3rem] text-[#51564E] leading-[158%]">
+              <h2
+                className={clsx(
+                  theme === "dark" ? "text-[#A2A89E]" : "text-[#282B27]",
+                  "font-bold text-4xl "
+                )}
+              >
+                {item.rate}
+              </h2>
+              <p
+                className={clsx(
+                  theme === "dark" ? "text-[#838B7F]" : "text-[#51564E]",
+                  "text-[1.3rem] leading-[158%]"
+                )}
+              >
                 {item.title}
               </p>
             </div>

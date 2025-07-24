@@ -1,4 +1,8 @@
+import clsx from "clsx";
+import { useTheme } from "../context/ThemeContext";
+
 const FAQ = () => {
+  const { theme } = useTheme();
   const faq = [
     {
       title: "Can DataWise's AI solutions be  business systems?",
@@ -36,8 +40,19 @@ const FAQ = () => {
     <section className="flex flex-col gap-12 xs:mx-6 md:mx-10 lg:mx-20 pt-32 pb-28">
       <div className="flex flex-col gap-5 md:w-full lg:w-1/2">
         <h6 className="uppercase text-green font-medium">Faq</h6>
-        <h2 className="font-bold text-5xl">Frequently asked questions</h2>
-        <p className="text-[#51564E]">
+        <h2
+          className={clsx(
+            theme === "dark" ? "text-[#E0E3DD]" : "text-[#141513]",
+            "font-bold text-5xl"
+          )}
+        >
+          Frequently asked questions
+        </h2>
+        <p
+          className={clsx(
+            theme === "dark" ? "text-[#838B7F]" : "text-[#51564E]"
+          )}
+        >
           Explore to learn more about how DataWise can empower your business
           with AI-driven solutions.
         </p>
@@ -46,10 +61,21 @@ const FAQ = () => {
         {faq.map((item, index) => {
           return (
             <div key={index} className="flex flex-col gap-6">
-              <h5 className="font-medium text-[1.3rem] leading-[142%]">
+              <h5
+                className={clsx(
+                  theme === "dark" ? "text-[#E0E3DD]" : "text-[#141513]",
+                  "font-medium text-[1.3rem] leading-[142%]"
+                )}
+              >
                 {item.title}
               </h5>
-              <p className="text-[#51564E]">{item.description}</p>
+              <p
+                className={clsx(
+                  theme === "dark" ? "text-[#838B7F]" : "text-[#51564E]"
+                )}
+              >
+                {item.description}
+              </p>
             </div>
           );
         })}
