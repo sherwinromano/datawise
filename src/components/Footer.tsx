@@ -79,7 +79,7 @@ const Footer = () => {
                 <ul className="flex flex-col gap-3 text-grey font-medium">
                   {footerItem.links.map((link, index) => {
                     return (
-                      <NavLink to="/" key={index}>
+                      <NavLink className="w-fit" to="/" key={index}>
                         {link}
                       </NavLink>
                     );

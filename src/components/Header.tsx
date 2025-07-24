@@ -3,142 +3,6 @@ import Button from "./ui/Button";
 import { useState, useRef, useEffect } from "react";
 
 const Header = () => {
-  const Navlinks = () => {
-    const [toggleDropdownFeatures, setToggleDropdownFeatures] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
-    const DropdownFeatures = () => {
-      const featuresLinks = [
-        {
-          title: "Real-time Data Processing",
-          description:
-            "Stay updated with instant insights and make decisions based on the latest data.",
-        },
-        {
-          title: "Collaborative Tools",
-          description:
-            "Work together seamlessly, share insights, and drive collective growth with your team.",
-        },
-        {
-          title: "Security & Compliance",
-          description:
-            "Ensure your data's safety with our top-tier security protocols and compliance certifications.",
-        },
-      ] as const;
-      const FeaturesLink = () => {
-        return featuresLinks.map((link, index) => {
-          return (
-            <NavLink
-              to="/"
-              key={index}
-              onClick={() => setToggleDropdownFeatures((prev) => !prev)}
-            >
-              <h3 className="font-semibold text-black">{link.title}</h3>
-              <p className="leading-[140%] mt-1 text-[0.875rem]">
-                {link.description}
-              </p>
-            </NavLink>
-          );
-        });
-      };
-
-      return (
-        <div
-          ref={dropdownRef}
-          className="absolute -left-40 top-10 border border-[#A2A89E] shadow rounded-2xl p-8 bg-white w-[85vw] text-[#51564E] flex gap-10"
-        >
-          <div className="flex flex-col gap-6 pr-10 border-r-2 border-[#C1C5BF]">
-            <h2 className="uppercase font-semibold">Home Pages</h2>
-            <div className="flex flex-col gap-6">
-              <FeaturesLink />
-            </div>
-          </div>
-          <div className="flex flex-col gap-6 pr-10 border-r-2 border-[#C1C5BF]">
-            <h2 className="uppercase font-semibold">Main Page</h2>
-            <div className="flex flex-col gap-6">
-              <FeaturesLink />
-            </div>
-          </div>
-          <div className="flex flex-col gap-6">
-            <h2 className="uppercase font-semibold">Content Page</h2>
-            <div className="flex flex-col gap-6">
-              <FeaturesLink />
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    useEffect(() => {
-      function handleClickOutside(event: MouseEvent) {
-        if (
-          dropdownRef.current &&
-          !dropdownRef.current.contains(event.target as Node)
-        ) {
-          setToggleDropdownFeatures(false);
-        }
-      }
-
-      if (toggleDropdownFeatures) {
-        document.addEventListener("mousedown", handleClickOutside);
-      } else {
-        document.removeEventListener("mousedown", handleClickOutside);
-      }
-
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [toggleDropdownFeatures]);
-
-    return (
-      <ul className="xs:hidden lg:flex items-center gap-10 text-[#3C403A] font-medium relative">
-        <li
-          className={"flex items-center gap-2 cursor-pointer"}
-          onClick={() => setToggleDropdownFeatures((prev) => !prev)}
-        >
-          Features
-          <svg
-            width="19"
-            height="18"
-            viewBox="0 0 19 18"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M5.30274 7.6789C4.99017 7.38948 4.50748 7.38948 4.19492 7.6789C3.84641 8.00158 3.84642 8.55267 4.19492 8.87535L8.94495 13.2735C9.28573 13.589 9.812 13.589 10.1528 13.2735L14.9027 8.87537C15.2512 8.55269 15.2512 8.00161 14.9028 7.67893C14.5902 7.38951 14.1075 7.38951 13.7949 7.67893L9.54887 11.6105L5.30274 7.6789Z"
-              fill="#3C403A"
-            />
-          </svg>
-        </li>
-        {toggleDropdownFeatures && <DropdownFeatures />}
-        <li className="flex items-center gap-2">
-          Case Studies
-          <svg
-            width="19"
-            height="18"
-            viewBox="0 0 19 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M5.30274 7.6789C4.99017 7.38948 4.50748 7.38948 4.19492 7.6789C3.84641 8.00158 3.84642 8.55267 4.19492 8.87535L8.94495 13.2735C9.28573 13.589 9.812 13.589 10.1528 13.2735L14.9027 8.87537C15.2512 8.55269 15.2512 8.00161 14.9028 7.67893C14.5902 7.38951 14.1075 7.38951 13.7949 7.67893L9.54887 11.6105L5.30274 7.6789Z"
-              fill="#3C403A"
-            />
-          </svg>
-        </li>
-        <li>
-          <NavLink to="/">English</NavLink>
-        </li>
-        <li>
-          <NavLink to="/">Support</NavLink>
-        </li>
-      </ul>
-    );
-  };
-
   return (
     <header className="flex items-center border-b border-lightgrey justify-between xs:mx-5 md:mx-9 xs:py-3.5 md:py-4 lg:py-6">
       <nav className="flex items-center gap-12 w-fit">
@@ -225,6 +89,142 @@ const Header = () => {
         </button>
       </div>
     </header>
+  );
+};
+
+const Navlinks = () => {
+  const [toggleDropdownFeatures, setToggleDropdownFeatures] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const DropdownFeatures = () => {
+    const featuresLinks = [
+      {
+        title: "Real-time Data Processing",
+        description:
+          "Stay updated with instant insights and make decisions based on the latest data.",
+      },
+      {
+        title: "Collaborative Tools",
+        description:
+          "Work together seamlessly, share insights, and drive collective growth with your team.",
+      },
+      {
+        title: "Security & Compliance",
+        description:
+          "Ensure your data's safety with our top-tier security protocols and compliance certifications.",
+      },
+    ] as const;
+    const FeaturesLink = () => {
+      return featuresLinks.map((link, index) => {
+        return (
+          <NavLink
+            to="/"
+            key={index}
+            onClick={() => setToggleDropdownFeatures((prev) => !prev)}
+          >
+            <h3 className="font-semibold text-black">{link.title}</h3>
+            <p className="leading-[140%] mt-1 text-[0.875rem]">
+              {link.description}
+            </p>
+          </NavLink>
+        );
+      });
+    };
+
+    return (
+      <div
+        ref={dropdownRef}
+        className="absolute -left-40 top-10 border border-[#A2A89E] shadow rounded-2xl p-8 bg-white w-[85vw] text-[#51564E] flex gap-10"
+      >
+        <div className="flex flex-col gap-6 pr-10 border-r-2 border-[#C1C5BF]">
+          <h2 className="uppercase font-semibold">Home Pages</h2>
+          <div className="flex flex-col gap-6">
+            <FeaturesLink />
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 pr-10 border-r-2 border-[#C1C5BF]">
+          <h2 className="uppercase font-semibold">Main Page</h2>
+          <div className="flex flex-col gap-6">
+            <FeaturesLink />
+          </div>
+        </div>
+        <div className="flex flex-col gap-6">
+          <h2 className="uppercase font-semibold">Content Page</h2>
+          <div className="flex flex-col gap-6">
+            <FeaturesLink />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setToggleDropdownFeatures(false);
+      }
+    }
+
+    if (toggleDropdownFeatures) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [toggleDropdownFeatures]);
+
+  return (
+    <ul className="xs:hidden lg:flex items-center gap-10 text-[#3C403A] font-medium relative">
+      <li
+        className={"flex items-center gap-2 cursor-pointer"}
+        onClick={() => setToggleDropdownFeatures((prev) => !prev)}
+      >
+        Features
+        <svg
+          width="19"
+          height="18"
+          viewBox="0 0 19 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M5.30274 7.6789C4.99017 7.38948 4.50748 7.38948 4.19492 7.6789C3.84641 8.00158 3.84642 8.55267 4.19492 8.87535L8.94495 13.2735C9.28573 13.589 9.812 13.589 10.1528 13.2735L14.9027 8.87537C15.2512 8.55269 15.2512 8.00161 14.9028 7.67893C14.5902 7.38951 14.1075 7.38951 13.7949 7.67893L9.54887 11.6105L5.30274 7.6789Z"
+            fill="#3C403A"
+          />
+        </svg>
+      </li>
+      {toggleDropdownFeatures && <DropdownFeatures />}
+      <li className="flex items-center gap-2">
+        Case Studies
+        <svg
+          width="19"
+          height="18"
+          viewBox="0 0 19 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M5.30274 7.6789C4.99017 7.38948 4.50748 7.38948 4.19492 7.6789C3.84641 8.00158 3.84642 8.55267 4.19492 8.87535L8.94495 13.2735C9.28573 13.589 9.812 13.589 10.1528 13.2735L14.9027 8.87537C15.2512 8.55269 15.2512 8.00161 14.9028 7.67893C14.5902 7.38951 14.1075 7.38951 13.7949 7.67893L9.54887 11.6105L5.30274 7.6789Z"
+            fill="#3C403A"
+          />
+        </svg>
+      </li>
+      <li>
+        <NavLink to="/">English</NavLink>
+      </li>
+      <li>
+        <NavLink to="/">Support</NavLink>
+      </li>
+    </ul>
   );
 };
 

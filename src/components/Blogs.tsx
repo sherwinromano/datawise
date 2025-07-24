@@ -1,9 +1,9 @@
 import Button from "./ui/Button";
-import Thumbnail from "../../public/thumbnail.webp";
-import imageOne from "../../public/spotlight-image-one.webp";
-import imageTwo from "../../public/spotlight-image-two.webp";
-import imageThree from "../../public/spotlight-image-three.webp";
-import imageFour from "../../public/spotlight-image-four.webp";
+import Thumbnail from "/thumbnail.webp";
+import imageOne from "/spotlight-image-one.webp";
+import imageTwo from "/spotlight-image-two.webp";
+import imageThree from "/spotlight-image-three.webp";
+import imageFour from "/spotlight-image-four.webp";
 
 const Blogs = () => {
   const spotlights = [
