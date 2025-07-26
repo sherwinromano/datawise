@@ -8,13 +8,14 @@ export type NavlinksProps = {
   theme: "light" | "dark";
 };
 
-type FeaturesDropdownProps = NavlinksProps & {
+type DropdownContents = NavlinksProps & {
   dropdownRef: React.RefObject<HTMLDivElement | null>;
-  setToggleDropdownFeatures: React.Dispatch<React.SetStateAction<boolean>>;
+  setToggledDropdown: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Navlinks = ({ theme }: NavlinksProps) => {
-  const [toggleDropdownFeatures, setToggleDropdownFeatures] = useState(false);
+  const [featuresDropdown, setFeaturesDropdown] = useState(false);
+  const [caseStudiesDropdown, setCaseStudiesDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -26,35 +27,52 @@ const Navlinks = ({ theme }: NavlinksProps) => {
     >
       <li
         className={clsx(
-          toggleDropdownFeatures && "text-green",
+          featuresDropdown && "text-green",
           "flex items-center gap-2 cursor-pointer"
         )}
-        onClick={() => setToggleDropdownFeatures((prev) => !prev)}
+        onClick={() => setFeaturesDropdown((prev) => !prev)}
       >
         Features
-        <Chevron
-          theme={theme}
-          toggleDropdownFeatures={toggleDropdownFeatures}
-        />
+        <Chevron theme={theme} toggledDropdown={featuresDropdown} />
       </li>
-      {toggleDropdownFeatures && (
+      {featuresDropdown && (
         <Dropdown
           dropdownRef={dropdownRef}
-          toggleDropdown={toggleDropdownFeatures}
-          setToggleDropdown={setToggleDropdownFeatures}
+          toggleDropdown={featuresDropdown}
+          setToggleDropdown={setFeaturesDropdown}
           children={
             <FeaturesDropdown
               theme={theme}
               dropdownRef={dropdownRef}
-              setToggleDropdownFeatures={setToggleDropdownFeatures}
+              setToggledDropdown={setFeaturesDropdown}
             />
           }
         />
       )}
-      <li className="flex items-center gap-2">
+      <li
+        className={clsx(
+          caseStudiesDropdown && "text-green",
+          "flex items-center gap-2 cursor-pointer"
+        )}
+        onClick={() => setCaseStudiesDropdown((prev) => !prev)}
+      >
         Case Studies
-        <Chevron theme={theme} />
+        <Chevron theme={theme} toggledDropdown={caseStudiesDropdown} />
       </li>
+      {caseStudiesDropdown && (
+        <Dropdown
+          dropdownRef={dropdownRef}
+          toggleDropdown={caseStudiesDropdown}
+          setToggleDropdown={setCaseStudiesDropdown}
+          children={
+            <CaseStudiesDropdown
+              theme={theme}
+              dropdownRef={dropdownRef}
+              setToggledDropdown={setCaseStudiesDropdown}
+            />
+          }
+        />
+      )}
       <li>
         <NavLink to="/">English</NavLink>
       </li>
@@ -68,8 +86,8 @@ const Navlinks = ({ theme }: NavlinksProps) => {
 const FeaturesDropdown = ({
   theme,
   dropdownRef,
-  setToggleDropdownFeatures,
-}: FeaturesDropdownProps) => {
+  setToggledDropdown,
+}: DropdownContents) => {
   const featuresLinks = [
     {
       title: "Real-time Data Processing",
@@ -93,7 +111,7 @@ const FeaturesDropdown = ({
         <NavLink
           to="/"
           key={index}
-          onClick={() => setToggleDropdownFeatures((prev) => !prev)}
+          onClick={() => setToggledDropdown((prev) => !prev)}
         >
           <h3
             className={clsx(
@@ -169,6 +187,54 @@ const FeaturesDropdown = ({
         <div className="flex flex-col gap-6">
           <FeaturesLink theme={theme} />
         </div>
+      </div>
+    </div>
+  );
+};
+
+const CaseStudiesDropdown = ({
+  theme,
+  dropdownRef,
+  setToggledDropdown,
+}: DropdownContents) => {
+  const links = [
+    "AI-Powered Predictive Analytics",
+    "Seamless Integrations",
+    "Customizable Dashboards",
+    "Real-time Data Processing",
+    "Collaborative Tools",
+    "Security & Compliance",
+  ];
+
+  return (
+    <div
+      ref={dropdownRef}
+      className={clsx(
+        theme === "dark"
+          ? "bg-[#121311] border-[#282B27] text-[#838B7F]"
+          : "bg-white border-[#A2A89E] text-[#51564E]",
+        "absolute py-2 left-[8.3rem] top-10 border shadow rounded-2xl w-fit flex z-10"
+      )}
+    >
+      <div className="flex flex-col">
+        {links.map((item, index) => {
+          return (
+            <NavLink
+              to="/"
+              className={clsx(
+                theme === "dark"
+                  ? "text-[#E0E3DD] border-[#282B27]"
+                  : "text-black border-[#A2A89E]",
+                item === "Security & Compliance" && "border-b-0",
+                "py-5 px-6 border-b"
+              )}
+              key={index}
+              onClick={() => setToggledDropdown((prev) => !prev)}
+            >
+              {item}
+            </NavLink>
+          );
+        })}
       </div>
     </div>
   );

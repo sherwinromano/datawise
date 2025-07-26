@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 type SVGProps = {
   theme: "light" | "dark";
-  toggleDropdownFeatures?: boolean;
+  toggledDropdown?: boolean;
 };
 
 // ? Datawise logo
@@ -62,14 +62,14 @@ export const Logo = ({ theme }: SVGProps) => {
 };
 
 // ? Chevron icon for dropdown
-export const Chevron = ({ theme, toggleDropdownFeatures }: SVGProps) => {
+export const Chevron = ({ theme, toggledDropdown }: SVGProps) => {
   return (
     <svg
       width="19"
       height="18"
       viewBox="0 0 19 18"
       xmlns="http://www.w3.org/2000/svg"
-      className={toggleDropdownFeatures ? "rotate-180" : "rotate-0"}
+      className={toggledDropdown ? "rotate-180" : "rotate-0"}
     >
       <path
         fillRule="evenodd"
@@ -77,10 +77,10 @@ export const Chevron = ({ theme, toggleDropdownFeatures }: SVGProps) => {
         d="M5.30274 7.6789C4.99017 7.38948 4.50748 7.38948 4.19492 7.6789C3.84641 8.00158 3.84642 8.55267 4.19492 8.87535L8.94495 13.2735C9.28573 13.589 9.812 13.589 10.1528 13.2735L14.9027 8.87537C15.2512 8.55269 15.2512 8.00161 14.9028 7.67893C14.5902 7.38951 14.1075 7.38951 13.7949 7.67893L9.54887 11.6105L5.30274 7.6789Z"
         fill={clsx(
           theme === "dark"
-            ? toggleDropdownFeatures
+            ? toggledDropdown
               ? "#3a7326"
               : "#A2A89E"
-            : toggleDropdownFeatures
+            : toggledDropdown
             ? "#3a7326"
             : "#3C403A"
         )}
