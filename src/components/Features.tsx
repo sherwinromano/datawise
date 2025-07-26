@@ -119,6 +119,7 @@ const Features = () => {
 
   return (
     <section
+      id="solutions"
       className={clsx(
         theme === "dark" ? "bg-[#121311]" : "bg-[#EFF0EF]",
         "xs:px-6 md:px-10 lg:px-20 xs:pt-[4.5rem] xs:pb-[4.3rem] md:pt-20 md:pb-[3.8rem] lg:pt-32 lg:pb-28 flex flex-col items-center gap-20 "

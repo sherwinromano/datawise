@@ -37,7 +37,10 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="flex flex-col gap-12 xs:mx-6 md:mx-10 lg:mx-20 pt-32 pb-28">
+    <section
+      id="faq"
+      className="flex flex-col gap-12 xs:mx-6 md:mx-10 lg:mx-20 pt-32 pb-28"
+    >
       <div className="flex flex-col gap-5 md:w-full lg:w-1/2">
         <h6 className="uppercase text-green font-medium">Faq</h6>
         <h2

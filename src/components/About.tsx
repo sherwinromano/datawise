@@ -19,7 +19,10 @@ const About = () => {
     },
   ];
   return (
-    <section className="xs:mx-6 md:mx-10 lg:mx-20 xs:py-[3.8rem] md:pt-32 md:pb-28 flex flex-col gap-[3.8rem]">
+    <section
+      id="about"
+      className="xs:mx-6 md:mx-10 lg:mx-20 xs:py-[3.8rem] md:pt-32 md:pb-28 flex flex-col gap-[3.8rem]"
+    >
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
           <h3 className="uppercase text-green font-medium">About Us</h3>
